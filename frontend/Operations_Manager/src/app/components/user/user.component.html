@@ -17,11 +17,15 @@
       <mat-cell *matCellDef="let user"> {{ user.email }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="isActive">
-      <mat-header-cell *matHeaderCellDef> Active </mat-header-cell>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
       <mat-cell *matCellDef="let user">
-        <mat-icon *ngIf="user.isActive">check</mat-icon>
-        <mat-icon *ngIf="!user.isActive">close</mat-icon>
+        <button mat-icon-button color="primary" (click)="editUserPrompt(user)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="confirmDelete(user.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-cell>
     </ng-container>
 
