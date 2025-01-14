@@ -29,17 +29,15 @@ export class UserComponent implements OnInit  {
       html: ` <input id="swal-input1" class="swal2-input" placeholder="First Name">
       <input id="swal-input2" class="swal2-input" placeholder="Last Name">
       <input id="swal-input3" class="swal2-input" placeholder="Email">
-      <input id="swal-input4" class="swal2-input" type="checkbox"> Active
       <input id="swal-input5" class="swal2-input" placeholder="Password" type="password"> `,
       focusConfirm: false,
       preConfirm: () => {
         const firstname = (document.getElementById('swal-input1') as HTMLInputElement).value;
         const lastname = (document.getElementById('swal-input2') as HTMLInputElement).value;
         const email = (document.getElementById('swal-input3') as HTMLInputElement).value;
-        const isActive = (document.getElementById('swal-input4') as HTMLInputElement).checked;
-        const password = (document.getElementById('swal-input5') as HTMLInputElement).value;
+        const password = (document.getElementById('swal-input4') as HTMLInputElement).value;
 
-        return { firstname, lastname, email, isActive, password };
+        return { firstname, lastname, email, password };
       },
     }).then((result) => {
       if (result.value) {
@@ -56,18 +54,16 @@ export class UserComponent implements OnInit  {
         <input id="swal-input1" class="swal2-input" placeholder="First Name" value="${user.firstname}">
         <input id="swal-input2" class="swal2-input" placeholder="Last Name" value="${user.lastname}">
         <input id="swal-input3" class="swal2-input" placeholder="Email" value="${user.email}">
-        <input id="swal-input4" class="swal2-input" type="checkbox" ${user.isActive ? 'checked' : ''}> Active
-        <input id="swal-input5" class="swal2-input" placeholder="Password" type="password" value="${user.password}">
+        <input id="swal-input4" class="swal2-input" placeholder="Password" type="password" value="${user.password}">
       `,
       focusConfirm: false,
       preConfirm: () => {
         const firstname = (document.getElementById('swal-input1') as HTMLInputElement).value;
         const lastname = (document.getElementById('swal-input2') as HTMLInputElement).value;
         const email = (document.getElementById('swal-input3') as HTMLInputElement).value;
-        const isActive = (document.getElementById('swal-input4') as HTMLInputElement).checked;
-        const password = (document.getElementById('swal-input5') as HTMLInputElement).value;
+        const password = (document.getElementById('swal-input4') as HTMLInputElement).value;
 
-        return { ...user, firstname, lastname, email, isActive, password };
+        return { ...user, firstname, lastname, email, password };
       },
     }).then((result) => {
       if (result.value) {
