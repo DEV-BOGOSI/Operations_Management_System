@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>User Management</h1>
+
+  <mat-table [dataSource]="users">
+    <ng-container matColumnDef="firstname">
+      <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.firstname }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastname">
+      <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.lastname }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.email }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isActive">
+      <mat-header-cell *matHeaderCellDef> Active </mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <mat-icon *ngIf="user.isActive">check</mat-icon>
+        <mat-icon *ngIf="!user.isActive">close</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <button mat-raised-button color="primary" (click)="addUserPrompt()">Add User</button>
+</div>
